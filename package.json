@@ -1,17 +1,19 @@
 {
-	"name": "test",
+	"name": "husky-eslint-prettier-template",
 	"version": "1.0.0",
-	"description": "a test project",
+	"description": "A project template with husky,eslint and prettier installed",
 	"main": "index.js",
 	"repository": {
 		"type": "git",
-		"url": "git@test"
+		"url": "https://github.com/Styunlen/husky-eslint-prettier-template.git"
 	},
 	"author": "styunlen <styunlen@qq.com>",
-	"license": "GPL-3.0-or-later",
+	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"lint": "pnpm lint-staged",
+		"pretty": "pnpm pretty-quick"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.4.2",
@@ -22,11 +24,19 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.1",
 		"husky": "^8.0.3",
-		"prettier": "^2.8.3"
+		"lint-staged": "^13.1.0",
+		"prettier": "^2.8.3",
+		"pretty-quick": "^3.1.3"
 	},
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/cz-conventional-changelog"
 		}
+	},
+	"lint-staged": {
+		"*.js": [
+			"eslint --fix",
+			"prettier --write"
+		]
 	}
 }
